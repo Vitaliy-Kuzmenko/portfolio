@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="conteiner">
+        <div class="header">
+            <input type="checkbox" class="chk_gamburger" id="chk_gamburger">
+            <label class="gamburger" for="chk_gamburger"><span class="line_gamburger"></span></label>
+            <nav class="nav_header">
+                <ul class="menu_desktop">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About me</a>
+                    </li>
+                    <li>
+                        <a href="#skils">Skills</a>
+                    </li>
+                    <li>
+                        <a href="#potfolio_conteiner"><h2><b>Portfolio (ЖМИ сюда)</b></h2></a>
+                    </li>
+                    <li>
+                        <a href="#footer">Contacts</a>
+                    </li>
+                </ul>
+                <hr />
+                <nav class="mobile">
+                    <ul class="menu_mobile">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#about">About me</a>
+                        </li>
+                        <li>
+                            <a href="#skils">Skills</a>
+                        </li>
+                        <li>
+                            <a href="#potfolio_conteiner">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#footer">Contacts</a>
+                        </li>
+
+                    </ul>
+                    <span class="header_lang_mobile"> RU|ENG</span>
+                </nav>
+            </nav>
+
+            <div class="header_info">
+                <h1>Vitaliy Kuzmenko</h1>
+                <div class="header_about">- The developer of PCB design,<br>- Front-end developer<br> 35 years old,
+                </div>
+                <span class="header_lang"> RU|ENG</span>
+            </div>
+
+            <div class="slide_header">
+                <img class="photo_slider" src="./image/content/img_slider/slide_1.jpg" alt="">
+                <img class="photo_slider" src="./image/content/img_slider/slide_2.jpg" alt="">
+                <img class="photo_slider" src="./image/content/img_slider/slide_3.jpg" alt="">
+                <img class="photo_slider" src="./image/content/img_slider/slide_4.jpg" alt="">
+            </div>
+            <div class="slide_header_mobile">
+                <img class="" src="./image/content/img_slider/img_slide_mobile1.png" alt="">
+            </div>
+
+
+        </div>
+        <div id="about">
+            <div class="about_info">
+                <h2>About me</h2>
+                <p>Hi, I'm Vitaliy - The developer of printed circuit boards, Front-end developer from Gorlivka. I'm
+                    interested in design and everything connected with it.</p>
+                <p>I'm studying at courses "Alex and ax" in IT-Academy.</p>
+                <p>Ready to implement excellent projects with wonderful people.</p>
+            </div>
+        </div>
+        <div id="skils">
+            <h2>Skills</h2>
+            <span>I work in such programs as</span>
+            <div class="program">
+                <div class="skils-program">
+                    <img src="./image/icons/eagle.jpg" alt="">
+                    <span>PCB design</span>
+                    <div class="skils_level">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_white.svg" alt="">
+                    </div>
+                </div>
+                <div class="skils-program">
+                    <img src="./image/icons/AI.svg" alt="">
+                    <span>Adobe Illustrator</span>
+                    <div class="skils_level">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_white.svg" alt="">
+                    </div>
+                </div>
+                <div class="skils-program">
+                    <img src="./image/icons/AE.svg" alt="">
+                    <span>Adobe After Effects</span>
+                    <div class="skils_level">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_white.svg" alt="">
+                    </div>
+                </div>
+                <div class="skils-program">
+                    <img src="./image/icons/Figma.svg" alt="">
+                    <span>Figma</span>
+                    <div class="skils_level">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_blk.svg" alt="">
+                        <img src="./image/icons/star_white.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="potfolio_conteiner">
+            <div class="portfolio">
+                <h2>Portfolio</h2>
+                <section>
+                    <!-- Спорт лото -->
+                    <h3>Сопртлото</h3>
+                    <div class="card-conteiner">
+                        <div class="card-header">
+                            <h4>Билет № 1 </h4>
+                            <h4>Тираж № <div id="lotoDraw"></div></h4>
+                        </div>
+                        <div class="card-number" id="cardNumber">
+                            
+                        </div>
+                    </div>
+                    
+                    <div id="printUserNumbers">После выбора - нажми отправить</div>
+                    <button type="button" class="button-loto" id="sendUserNumbers">Отправить</button>
+                    <p></p>
+
+                    <button type="button" class="button-loto" id="checkWinsBtn">Проверить</button>
+                   <span>Верно угаданных чисел - </span> <div id="printUserWins"></div>
+                    
+
+                </section>
+
+                <section>
+                    <img src="./image/content/img_portfolio.svg" alt="">
+                    <span> <a href="#">Online fashion store - Homepage</a> </span>
+
+                    <section>
+                        <img src="./image/content/img_reebok.svg" alt="">
+                        <span> <a href="#">Reebok Store - Concept</a> </span>
+                    </section>
+
+                    <section>
+                        <img src="./image/content/img_braun.png" alt="">
+                        <span> <a href="#">Braun Landing Page - Concept</a> </span>
+                    </section>
+
+                </section>
+            </div>
+        </div>
+        <div id="footer">
+            <h2>Contacts</h2>
+            <span>Want to know more or just chat? You are welcome!</span>
+            <button class="footer_btn" type="button">Send message</button>
+            <div class="footer_social_network">
+                <img src="./image/icons/in.svg" alt="">
+                <img src="./image/icons/insta.svg" alt="">
+                <img src="./image/icons/be.svg" alt="">
+                <img src="./image/icons/ball.svg" alt="">
+            </div>
+            <p>Like me on <br> LinkedIn, Instagram, Behance, Dribble</p>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
