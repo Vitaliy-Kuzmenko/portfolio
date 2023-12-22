@@ -1,38 +1,40 @@
+// ДЛЯ ПОДУМАТЬ
+// снять события с кнопок после достижения максимальной комбинации
+// кнопка сброс или при повторном нажатии снимать выделение
+
 const cardNumber = document.getElementById("cardNumber");
 const btnCard = document.getElementById("btnCard");
-const lotoDraw = document.getElementById('loto-draw')
-const printNumbersEntered = document.getElementById('printNumbersEntered')
-let numbersEntered = 0
+const lotoDraw = document.getElementById("loto-draw");
+const printNumbersEntered = document.getElementById("printNumbersEntered");
+const printWinnerNumbers = document.getElementById("printWinnerNumbers");
 const arrBtn = [];
 const userNumbers = [];
-const winnerNumbers = [1,2,3,4,5]
-let userWins = 0
-let userLos = 0
+const winnerNumbers = [1, 2, 3, 4, 5];
+let userWins = 0;
+let userLos = 0;
 const moneyWins = {
-    0: 'You los ((',
-    1: 'You wins 1 dollar',
-    2: 'You wins 5 dollars',
-    3: 'You wins 10 dollars',
-    4: 'You wins 100 dollars',
-    5: 'You wins JECKPOT'
-}
+    0: "You los ((",
+    1: "You wins 1 dollar",
+    2: "You wins 5 dollars",
+    3: "You wins 10 dollars",
+    4: "You wins 100 dollars",
+    5: "You wins JECKPOT",
+};
+
+//Настройка игрового поля
 
 // Подсчёт введённых чисел
-const checkInputNumbers = ()=>{
-    if(userNumbers.length -1 == 5){
-        printNumbersEntered.innerHTML = `${userNumbers.length} БОЛЬШЕ НЕЛЬЗЯ!`
-        console.log('stop')
+const checkInputNumbers = () => {
+    if (userNumbers.length > 5) {
+        printNumbersEntered.innerHTML = `${userNumbers.length} БОЛЬШЕ НЕЛЬЗЯ!`;
+        alert("АСТАНАВИТЕСЬ!");
+        console.log("stop");
     } else {
-        numbersEntered +=1
-        printNumbersEntered.innerHTML = `${userNumbers.length}`
-        console.log('ещё')
-    }console.log('ещё')
-}
-
-
-//Настройка кнопок с цифрами
-
-
+        printNumbersEntered.innerHTML = `${userNumbers.length}`;
+        console.log("ещё");
+    }
+};
+// настройка кнопок
 for (let i = 1; i <= 36; i++) {
     const newButton = document.createElement("button");
     newButton.className = "button-style";
@@ -43,57 +45,68 @@ for (let i = 1; i <= 36; i++) {
 
     cardNumber.appendChild(newButton);
     arrBtn.push(newButton);
-// объявляю событие клик для каждой из кнопок
+
+    // объявление события клик для каждой из кнопок
     const btnSetingsFn = () => {
         arrBtn[i - 1].style.backgroundColor = "red";
         userNumbers.push(Number(arrBtn[i - 1].value));
-        newButton.removeEventListener("click", btnSetingsFn); // снял событие клик с кнопки на котолрую нажали  
-        checkInputNumbers() 
-}
+        newButton.removeEventListener("click", btnSetingsFn); // снял событие клик с кнопки на котолрую нажали
+        checkInputNumbers();
+    };
     newButton.addEventListener("click", btnSetingsFn);
 }
 
-
-
-
+//Отправка, проверка, вывод выигрыша  и комбинации тикущего тиража
 
 const sendUserNumbers = document.getElementById("sendUserNumbers"); //кнопка отправить
 const printUserNumbers = document.getElementById("printUserNumbers"); // кнопка проверить
+ //проверка и сортировка при отправке
+const sendNumFun = () => {
+    if (userNumbers.length > 5) {
+        alert("Игра не возможна, много цифр!");
+        return;
+    } else if (userNumbers.length < 5) {
+        alert("Игра не возможна, мало цифр!");
+        return;
+    } else console.log("54");
+   
 
-const sendNumFun = ()=> {
-    //сортировка по возрастанию
-    userNumbers.sort(function (a, b) {
+    userNumbers.sort((a, b) => {
         return a - b;
     });
 
-    const strUserNumbers = userNumbers.join("-"); //вывод в строку с разделителем
-    printUserNumbers.innerHTML = strUserNumbers;
-}
-
-
-sendUserNumbers.addEventListener("click", sendNumFun);
+    printUserNumbers.innerHTML = userNumbers.join("-"); //вывод в строку с разделителем
+};
 
 const checkWinsBtn = document.getElementById("checkWinsBtn");
 const printUserWins = document.getElementById("printUserWins");
+
 //проверка выигрышных комбинаций
 const checkWinsFn = () => {
+    if (userNumbers.length > 5) {
+        alert("Игра не возможна, много цифр!");
+        return;
+    } else if (userNumbers.length < 5) {
+        alert("Игра не возможна, мало цифр!");
+        return;
+    } else console.log("54");
 
-    for (let i = 0; i <= 4 ; i++) {
+    for (let i = 0; i <= 4; i++) {
         if (winnerNumbers[i] === userNumbers[i]) {
             userWins += 1;
         } else userLos += 1;
     }
-    
     printUserWins.innerHTML = `Угаданных чисел - ${userWins} , Выигрыш ${moneyWins[userWins]}`;
+    printWinnerNumbers.innerHTML = winnerNumbers.join("-");
 };
 
+sendUserNumbers.onclick = () => {
+    sendNumFun();
+};
 
 checkWinsBtn.onclick = () => {
     checkWinsFn();
 };
-
-
-
 
 //VER 1.0
 // const cardNumber = document.getElementById("cardNumber");
