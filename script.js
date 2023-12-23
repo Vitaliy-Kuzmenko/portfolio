@@ -1,7 +1,7 @@
 // ДЛЯ ПОДУМАТЬ
 // снять события с кнопок после достижения максимальной комбинации
 // кнопка сброс или при повторном нажатии снимать выделение
-// генерация случайных чисел или случайная выборка из массива чисел
+
 
 const cardNumber = document.getElementById("cardNumber");
 const btnCard = document.getElementById("btnCard");
@@ -59,47 +59,32 @@ for (let i = 1; i <= 36; i++) {
     newButton.addEventListener("click", btnSetingsFn);
 }
 
-
 ///////////////////////////////////////
-//Отправка, проверка, вывод выигрыша  и комбинации тикущего тиража
+//Отправка, проверка, вывод выигрыша и комбинации тикущего тиража
 
 // Случайные числа
-let numRandom = 0
-const testRandomArr = []
-const randomNumbersFn = ()=>{
-    numRandom  = Math.floor(Math.random() * arrBtn.length +1)
-    testRandomArr.push(numRandom)
-    
-    
-}
-debugger
-randomNumbersFn()
-winnerNumbers.push(numRandom)
-    for (let i = 5; i >= winnerNumbers.length +1 ; ){   
-        
-        // winnerNumbers.sort((a,b)=>{
-        //     return a - b
-        // })
-       
-            if(winnerNumbers.includes(numRandom)){
-                randomNumbersFn()
-                console.log("рестарт")
-                // winnerNumbers.push(numRandom +'pp')
-            } else {
-                randomNumbersFn()
-                winnerNumbers.push(numRandom)
-            } 
+let numRandom = 0;
+const testRandomArr = [];
+const randomNumbersFn = () => {
+    numRandom = Math.floor(Math.random() * arrBtn.length + 1);
+    testRandomArr.push(numRandom);
+};
+
+randomNumbersFn();
+winnerNumbers.push(numRandom);
+for (let i = 5; i >= winnerNumbers.length + 1; ) {
+    if (winnerNumbers.includes(numRandom)) {
+        randomNumbersFn();
+        console.log("рестарт");
+    } else {
+        winnerNumbers.push(numRandom);
     }
+}
 
-console.log(testRandomArr)
-console.log(winnerNumbers)
-
-
-
+//проверка и сортировка при отправке
 const sendUserNumbers = document.getElementById("sendUserNumbers"); //кнопка отправить
 const printUserNumbers = document.getElementById("printUserNumbers"); // кнопка проверить
 
-//проверка и сортировка при отправке
 const sendNumFun = () => {
     if (userNumbers.length > 5) {
         alert("Игра не возможна, много цифр!");
@@ -108,7 +93,6 @@ const sendNumFun = () => {
         alert("Игра не возможна, мало цифр!");
         return;
     } else console.log("54");
-   
 
     userNumbers.sort((a, b) => {
         return a - b;
@@ -116,7 +100,6 @@ const sendNumFun = () => {
 
     printUserNumbers.innerHTML = userNumbers.join("-"); //вывод в строку с разделителем
 };
-
 
 //проверка выигрышных комбинаций
 
@@ -132,15 +115,16 @@ const checkWinsFn = () => {
         return;
     } else console.log("54");
 
-    winnerNumbers.sort((a,b)=>{
-        return a - b
-    })
+    winnerNumbers.sort((a, b) => {
+        return a - b;
+    });
 
     for (let i = 0; i <= 4; i++) {
         if (winnerNumbers[i] === userNumbers[i]) {
             userWins += 1;
         } else userLos += 1;
     }
+
     printUserWins.innerHTML = `Угаданных чисел - ${userWins} , Выигрыш ${moneyWins[userWins]}`;
     printWinnerNumbers.innerHTML = winnerNumbers.join("-");
 };
@@ -153,26 +137,5 @@ checkWinsBtn.onclick = () => {
     checkWinsFn();
 };
 
-//VER 1.0
-// const cardNumber = document.getElementById("cardNumber");
-// const btnCard = document.getElementById("btnCard");
-// const arrBtn = [];
-// const userNumbers = []
-// for (let i = 1; i <= 36; i++) {
-//     const newButton = document.createElement("button");
-//     newButton.className = "button-style";
-//     newButton.id = "button" + i;
-//     newButton.type = "button";
-//     newButton.value = i;
-//     newButton.textContent = i;
-
-//     cardNumber.appendChild(newButton);
-//     arrBtn.push(newButton);
-//     newButton.onclick = () => {
-//     arrBtn[i - 1].style.backgroundColor = "red";
-//     userNumbers.push(arrBtn[i - 1].value)
-
-//     };
-// }
-
-// console.log(userNumbers)
+console.log(testRandomArr);
+console.log(winnerNumbers);
