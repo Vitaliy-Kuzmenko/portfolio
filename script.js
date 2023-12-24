@@ -222,7 +222,7 @@ for (let i = 0; i < testArrRandomWin.length; i++) {
 }
 
 
-for (let i = 0; i<=10000; i++){
+for (let i = 0; i<=100; i++){
     if (result.length == 1 ){
         console.log('finsh')
         console.log(testTry + " кол-во попыток")
