@@ -1,6 +1,8 @@
 // ДЛЯ ПОДУМАТЬ
 // снять события с кнопок после достижения максимальной комбинации
 // кнопка сброс или при повторном нажатии снимать выделение
+// не правильная проверка на совпадение чисел.
+// Нужно проходить каждым индексом по второму массиву и искать совпадения и потом пушить  в другой массив
 
 
 const cardNumber = document.getElementById("cardNumber");
@@ -11,7 +13,7 @@ const printWinnerNumbers = document.getElementById("printWinnerNumbers");
 const arrBtn = [];
 const userNumbers = [];
 // const winnerNumbers = [1, 2, 3, 4, 5];
-const winnerNumbers = [];
+// const winnerNumbers = [];
 let userWins = 0;
 let userLos = 0;
 const moneyWins = {
@@ -22,6 +24,10 @@ const moneyWins = {
     4: "You wins 100 dollars",
     5: "You wins JECKPOT",
 };
+
+
+
+
 
 ////////////////////////////////////////////
 //Настройка игрового поля
@@ -137,5 +143,109 @@ checkWinsBtn.onclick = () => {
     checkWinsFn();
 };
 
+
 console.log(testRandomArr);
 console.log(winnerNumbers);
+
+
+
+///////////////////////
+///////////////////////
+///////////////////////
+///////////////////////
+
+let testArrRandomWin =[]
+
+const testUsernumber = [10,15,25,30,36]
+
+let testUserWins = 0
+let testUserLos = 0
+let testTry = 0
+const result = [];
+
+
+const test = ()=>{
+
+// Случайные числа
+let testNumRandom = 0;
+testArrRandomWin = []
+
+const randomNumbersFn = () => {
+    testNumRandom = Math.floor(Math.random() * arrBtn.length + 1);
+};
+
+randomNumbersFn();
+
+
+
+testArrRandomWin.push(testNumRandom);
+
+
+
+for (let i = 5; i >= testArrRandomWin.length + 1; ) {
+    if (testArrRandomWin.includes(testNumRandom)) {
+        randomNumbersFn();
+        console.log("рестарт");
+    } else {
+        testArrRandomWin.push(testNumRandom);
+    }
+}
+
+testArrRandomWin.sort((a,b)=>{
+    return a-b
+})
+
+
+
+testTry ++
+
+}
+
+
+
+test()
+
+// for (let i = 0; i <= 4; i++) {
+//     if (testArrRandomWin[i] === testUsernumber[i]) {
+//         testUserWins += 1;
+//     } else testUserLos += 1;
+// }
+
+
+
+for (let i = 0; i < testArrRandomWin.length; i++) {
+  for (let j = 0; j < testUsernumber.length; j++) {
+    if (testArrRandomWin[i] === testUsernumber[j]) {
+      result.push(testArrRandomWin[i])
+    }
+  }
+}
+
+
+for (let i = 0; i<=10000; i++){
+    if (result.length == 1 ){
+        console.log('finsh')
+        console.log(testTry + " кол-во попыток")
+        console.log(testUserWins + ' Числа выиграли')
+        console.log(testUsernumber)
+        console.log(testArrRandomWin)
+        console.log(result)
+        
+        break
+    } else  {
+        
+
+        console.log('Рестарт подсчёта')
+        // console.log(testUsernumber)
+        // console.log(testArrRandomWin)
+        console.log(testTry + " кол-во попыток")
+            test()
+    }
+
+}
+
+
+
+
+
+// console.log(testTry + " кол-во попыток")
