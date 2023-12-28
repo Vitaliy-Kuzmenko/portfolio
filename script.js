@@ -13,8 +13,8 @@ const printWinnerNumbers = document.getElementById("printWinnerNumbers");
 const arrBtn = [];
 const userNumbers = [];
 // const winnerNumbers = [1, 2, 3, 4, 5];
-// const winnerNumbers = [];
-let userWins = 0;
+const winnerNumbers = [];
+let userWins;
 let userLos = 0;
 const moneyWins = {
     0: "You los ((",
@@ -27,7 +27,19 @@ const moneyWins = {
 
 
 
-
+const fnSortArr = (firstArr, secondArr)=>{
+    const results = [];
+    for (let i = 0; i < firstArr.length; i++) {
+        for (let j = 0; j < secondArr.length; j++) {
+          if (firstArr[i] === secondArr[j]) {
+            results.push(firstArr[i])
+          }
+        }
+      }
+      return results.sort((a,b)=>{
+        return a-b
+      })
+}
 
 ////////////////////////////////////////////
 //Настройка игрового поля
@@ -43,6 +55,7 @@ const checkInputNumbers = () => {
         console.log("ещё");
     }
 };
+
 // настройка кнопок
 for (let i = 1; i <= 36; i++) {
     const newButton = document.createElement("button");
@@ -62,6 +75,7 @@ for (let i = 1; i <= 36; i++) {
         newButton.removeEventListener("click", btnSetingsFn); // снял событие клик с кнопки на котолрую нажали
         checkInputNumbers();
     };
+
     newButton.addEventListener("click", btnSetingsFn);
 }
 
@@ -70,10 +84,8 @@ for (let i = 1; i <= 36; i++) {
 
 // Случайные числа
 let numRandom = 0;
-const testRandomArr = [];
 const randomNumbersFn = () => {
     numRandom = Math.floor(Math.random() * arrBtn.length + 1);
-    testRandomArr.push(numRandom);
 };
 
 randomNumbersFn();
@@ -125,13 +137,9 @@ const checkWinsFn = () => {
         return a - b;
     });
 
-    for (let i = 0; i <= 4; i++) {
-        if (winnerNumbers[i] === userNumbers[i]) {
-            userWins += 1;
-        } else userLos += 1;
-    }
+    userWins = fnSortArr(winnerNumbers, userNumbers)
 
-    printUserWins.innerHTML = `Угаданных чисел - ${userWins} , Выигрыш ${moneyWins[userWins]}`;
+    printUserWins.innerHTML = `Угаданных чисел - ${userWins.length} , Выигрыш ${moneyWins[userWins.length]}`;
     printWinnerNumbers.innerHTML = winnerNumbers.join("-");
 };
 
@@ -144,7 +152,7 @@ checkWinsBtn.onclick = () => {
 };
 
 
-console.log(testRandomArr);
+
 console.log(winnerNumbers);
 
 
@@ -154,14 +162,14 @@ console.log(winnerNumbers);
 ///////////////////////
 ///////////////////////
 
-let testArrRandomWin =[]
+let testArrRandomWin =[10,15,25,30,24]
 
 const testUsernumber = [10,15,25,30,36]
 
 let testUserWins = 0
 let testUserLos = 0
 let testTry = 0
-const result = [];
+let result =[]
 
 
 const test = ()=>{
@@ -176,11 +184,7 @@ const randomNumbersFn = () => {
 
 randomNumbersFn();
 
-
-
 testArrRandomWin.push(testNumRandom);
-
-
 
 for (let i = 5; i >= testArrRandomWin.length + 1; ) {
     if (testArrRandomWin.includes(testNumRandom)) {
@@ -195,57 +199,33 @@ testArrRandomWin.sort((a,b)=>{
     return a-b
 })
 
-
-
-testTry ++
-
+ testTry +=1
 }
 
 
 
 test()
 
-// for (let i = 0; i <= 4; i++) {
-//     if (testArrRandomWin[i] === testUsernumber[i]) {
-//         testUserWins += 1;
-//     } else testUserLos += 1;
-// }
+
+// console.log(testArrRandomWin)
+// console.log(testUsernumber)
+result = fnSortArr(testArrRandomWin, testUsernumber)
 
 
-
-for (let i = 0; i < testArrRandomWin.length; i++) {
-  for (let j = 0; j < testUsernumber.length; j++) {
-    if (testArrRandomWin[i] === testUsernumber[j]) {
-      result.push(testArrRandomWin[i])
+for (let i =0; i <100; i++){
+    if (result.length !== 2){
+        testUserLos += 1
+    } else {
+        testUserWins += 1
     }
-  }
-}
-
-
-for (let i = 0; i<=100; i++){
-    if (result.length == 1 ){
-        console.log('finsh')
-        console.log(testTry + " кол-во попыток")
-        console.log(testUserWins + ' Числа выиграли')
-        console.log(testUsernumber)
-        console.log(testArrRandomWin)
-        console.log(result)
-        
-        break
-    } else  {
-        
-
-        console.log('Рестарт подсчёта')
-        // console.log(testUsernumber)
-        // console.log(testArrRandomWin)
-        console.log(testTry + " кол-во попыток")
-            test()
-    }
-
 }
 
 
 
+console.log(result)
+console.log(result.length)
 
+console.log(testUserWins + ' wins')
+console.log(testUserLos + ' los')
+console.log(testTry)
 
-// console.log(testTry + " кол-во попыток")
