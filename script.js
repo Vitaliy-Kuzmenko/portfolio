@@ -13,13 +13,8 @@ const printWinnerNumbers = document.getElementById("printWinnerNumbers");
 const arrBtn = [];
 const userNumbers = [];
 // const winnerNumbers = [1, 2, 3, 4, 5];
-<<<<<<< HEAD
-const winnerNumbers = [];
-let userWins;
-=======
  const winnerNumbers = [];
 let userWins = 0;
->>>>>>> f9a594060d9ebb0c73a9da548381ceb58afb69d3
 let userLos = 0;
 const moneyWins = {
     0: "You los ((",
@@ -51,6 +46,7 @@ const fnSortArr = (firstArr, secondArr)=>{
 
 // Подсчёт введённых чисел
 const checkInputNumbers = () => {
+    
     if (userNumbers.length > 5) {
         printNumbersEntered.innerHTML = `${userNumbers.length} БОЛЬШЕ НЕЛЬЗЯ!`;
         alert("АСТАНАВИТЕСЬ!");
@@ -234,7 +230,7 @@ console.log(testUserWins + ' wins')
 console.log(testUserLos + ' los')
 console.log(testTry)
 
-<<<<<<< HEAD
-=======
+
+
 // console.log(testTry + " кол-во попыток")
->>>>>>> f9a594060d9ebb0c73a9da548381ceb58afb69d3
+const tryGitPush = 'true'
