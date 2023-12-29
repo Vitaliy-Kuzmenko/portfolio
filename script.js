@@ -177,7 +177,7 @@ const test = ()=>{
 
 // Случайные числа
 let testNumRandom = 0;
-testArrRandomWin = []
+testArrRandomWin = [] // обнуляю массив 
 
 const randomNumbersFn = () => {
     testNumRandom = Math.floor(Math.random() * arrBtn.length + 1);
@@ -186,6 +186,7 @@ const randomNumbersFn = () => {
 randomNumbersFn();
 
 testArrRandomWin.push(testNumRandom);
+// проверка в цикле на дублирующиеся номера
 
 for (let i = 5; i >= testArrRandomWin.length + 1; ) {
     if (testArrRandomWin.includes(testNumRandom)) {
@@ -214,10 +215,11 @@ result = fnSortArr(testArrRandomWin, testUsernumber)
 
 
 for (let i =0; i <100; i++){
-    if (result.length !== 2){
-        testUserLos += 1
-    } else {
+    if (result.length >= 1){
         testUserWins += 1
+    } else {
+        testUserLos += 1
+        test()
     }
 }
 
@@ -228,9 +230,8 @@ console.log(result.length)
 
 console.log(testUserWins + ' wins')
 console.log(testUserLos + ' los')
-console.log(testTry)
+console.log(testTry + ' Кол-во попыток подбора')
 
 
 
 // console.log(testTry + " кол-во попыток")
-const tryGitPush = 'true'
