@@ -163,7 +163,7 @@ console.log(winnerNumbers);
 ///////////////////////
 ///////////////////////
 
-let testArrRandomWin =[10,15,25,30,24]
+let testArrRandomWin =[]
 
 const testUsernumber = [10,15,25,30,36]
 
@@ -209,17 +209,24 @@ testArrRandomWin.sort((a,b)=>{
 test()
 
 
-// console.log(testArrRandomWin)
-// console.log(testUsernumber)
+console.log(testArrRandomWin)
+console.log(testUsernumber)
 result = fnSortArr(testArrRandomWin, testUsernumber)
+
+// for ( let i = 0; i<=5; i++){
+//     test()
+//     console.log(testTry)
+// }
 
 
 for (let i =0; i <100; i++){
     if (result.length >= 1){
         testUserWins += 1
+        console.log(testTry)
     } else {
         testUserLos += 1
         test()
+        console.log(testTry)
     }
 }
 
