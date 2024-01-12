@@ -26,7 +26,7 @@ const moneyWins = {
 };
 
 
-
+// функция на поиск совпадений в двух массивах
 const fnSortArr = (firstArr, secondArr)=>{
     const results = [];
     for (let i = 0; i < firstArr.length; i++) {
@@ -174,59 +174,70 @@ let result =[]
 
 
 const test = ()=>{
-
+    
 // Случайные числа
-let testNumRandom = 0;
+let testNumRandom = 0; // Случайное число
 testArrRandomWin = [] // обнуляю массив 
 
 const randomNumbersFn = () => {
     testNumRandom = Math.floor(Math.random() * arrBtn.length + 1);
+    console.log('step_1_получение рандомной цифры')
 };
 
 randomNumbersFn();
 
-testArrRandomWin.push(testNumRandom);
+testArrRandomWin.push(testNumRandom); //первое число пушим влюбом случае
 // проверка в цикле на дублирующиеся номера
 
 for (let i = 5; i >= testArrRandomWin.length + 1; ) {
+    console.log('step_2 цикл проверки на дублирующиеся номера')
     if (testArrRandomWin.includes(testNumRandom)) {
+        console.log('step_3 найден дубликат, запуск повтора случайного числа')
         randomNumbersFn();
-        console.log("рестарт");
     } else {
         testArrRandomWin.push(testNumRandom);
+        console.log(`step_4 дубликата не найдено, добавляем число в массив ${testArrRandomWin}`)
     }
 }
 
+// сортируем по порядку числа в масиве выигрышной комбинации
 testArrRandomWin.sort((a,b)=>{
+    console.log(`step_5 сортировка массива получившегося массива` )
     return a-b
+
 })
-
- testTry +=1
+console.log(`step_5.1 отсортированный массив ${testArrRandomWin}`)
+console.log(`step_7 запуск функции поиска совпадений юзер чисел с рандомом и если есть запушить в масссив ${result}`)
+result = fnSortArr(testArrRandomWin, testUsernumber)// функция на поиск совпадений в двух массивах
+console.log('step_6 конец функции')
 }
-
-
 
 test()
 
 
-console.log(testArrRandomWin)
-console.log(testUsernumber)
-result = fnSortArr(testArrRandomWin, testUsernumber)
-
-// for ( let i = 0; i<=5; i++){
-//     test()
-//     console.log(testTry)
-// }
 
 
-for (let i =0; i <100; i++){
-    if (result.length >= 1){
-        testUserWins += 1
+
+
+
+for (let i =0; i <200000; i++){
+    console.log(`step_9 запуск цикла на проверку наличие чисел в массиве совпадений. Найдено - ${result.length}`)
+    if (result.length >= 5){
+        console.log(`step_10 если длина массива совпадений больше 1 - прервать цикл и добавить + 1 к в переменную подсчёта успеха выигрыша`)
+         testUserWins += 1
         console.log(testTry)
+        break
     } else {
+        console.log(`step_11 если длина массива совпадений меньше 1 - добавить +1 в переменную не удачных попыток`)
+        console.log(`step_11,1 Случайные числа ${testArrRandomWin}`)
+        console.log(`step_11,2 Числа пользователя  ${testUsernumber}`)
+        console.log(`step_11,3 добавляем +1 к не удачам`)
         testUserLos += 1
+        testTry +=1 // прибавляем +1 в переменную подсчёта запуска этой функции
+        console.log(`step_11,4 Кол-во попыток  ${testTry}`)
+        console.log(`step_11,5 повторный запуск функции генерации случайных чисел`)
         test()
-        console.log(testTry)
+        
     }
 }
 
@@ -238,6 +249,7 @@ console.log(result.length)
 console.log(testUserWins + ' wins')
 console.log(testUserLos + ' los')
 console.log(testTry + ' Кол-во попыток подбора')
+console.log(`Мог потратить денег на билеты (50 рублей 1 билет) ${testTry * 50} рублей`)
 
 
 
