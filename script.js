@@ -222,7 +222,7 @@ test()
 
 for (let i =0; i <200000; i++){
     console.log(`step_9 запуск цикла на проверку наличие чисел в массиве совпадений. Найдено - ${result.length}`)
-    if (result.length >= 5){
+    if (result.length >= 4){
         console.log(`step_10 если длина массива совпадений больше 1 - прервать цикл и добавить + 1 к в переменную подсчёта успеха выигрыша`)
          testUserWins += 1
         console.log(testTry)
